@@ -1,0 +1,103 @@
+/* src/pages/BookingForm.css */
+
+.booking-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 70px); /* ลบความสูง Navbar ออก */
+  background-color: #F0F2F5; /* สีพื้นหลังอ่อนลง */
+  font-family: 'Sarabun', sans-serif;
+  padding: 2rem 1rem;
+  box-sizing: border-box; /* รวม padding ในความกว้าง/สูง */
+}
+
+.booking-form {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0); /* เพิ่ม gradient เล็กน้อย */
+  width: 100%;
+  max-width: 550px; /* เพิ่มความกว้างเล็กน้อย */
+  border-radius: 16px; /* ขอบโค้งมนขึ้น */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* เงาเข้มขึ้น มีมิติ */
+  overflow: hidden;
+  border: 1px solid #e0e0e0; /* เพิ่มขอบบางๆ */
+}
+
+.booking-header {
+  background: linear-gradient(135deg, #4A90E2, #7B68EE); /* Gradient สีฟ้าม่วง */
+  color: white;
+  padding: 2.5rem 2rem; /* เพิ่ม padding */
+  text-align: center;
+  border-bottom: 2px solid #5C7AEA; /* ขอบด้านล่างของ header */
+}
+
+.booking-header h2 {
+  margin: 0;
+  font-size: 2.5rem; /* ตัวใหญ่ขึ้น */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.booking-header p {
+  margin: 0.8rem 0 0;
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+.form-fields {
+  padding: 3rem 2.5rem; /* เพิ่ม padding */
+}
+
+.input-group {
+  margin-bottom: 2rem; /* เพิ่มระยะห่างระหว่างกลุ่ม input */
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.7rem; /* เพิ่มระยะห่างจาก input */
+  font-weight: 600; /* หนาขึ้น */
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.input-group input[type="date"],
+.input-group input[type="time"] {
+  width: 100%;
+  padding: 1rem 1.2rem; /* เพิ่ม padding */
+  border: 1px solid #c0c0c0; /* สีขอบอ่อนลงเล็กน้อย */
+  border-radius: 10px; /* โค้งมนขึ้น */
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input[type="date"]:focus,
+.input-group input[type="time"]:focus {
+  border-color: #4A90E2; /* สีขอบเมื่อ focus */
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); /* เงาเมื่อ focus */
+  outline: none; /* ลบ outline เริ่มต้นของ browser */
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1.2rem; /* เพิ่ม padding */
+  border: none;
+  border-radius: 10px; /* โค้งมนขึ้น */
+  background-color: #28a745; /* สีเขียวหลัก */
+  color: white;
+  font-size: 1.25rem; /* ตัวใหญ่ขึ้น */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #218838; /* สีเข้มขึ้นเมื่อชี้ */
+  transform: translateY(-2px); /* ยกขึ้นเล็กน้อย */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:disabled {
+  background-color: #90a4ae; /* สีเทาเมื่อ disabled */
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}

@@ -16,7 +16,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -37,6 +36,14 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "msw": "^2.10.5"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
     ]
   }
 }

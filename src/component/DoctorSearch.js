@@ -1,9 +1,25 @@
 // src/pages/DoctorSearch.js
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../css/DoctorSearch.css'; // ไฟล์ CSS ที่จะสร้างในขั้นตอนถัดไป
 
 function DoctorSearch() {
     const [searchTerm, setSearchTerm] = useState('');
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const handleBookAppointment = (doctor) => {
+        // สร้าง URL ที่มีข้อมูลของหมอแนบไปด้วย
+        const params = new URLSearchParams({
+            doctorId: doctor.id,
+            doctorName: doctor.name,
+            specialty: doctor.specialty,
+        });
+
+        // สั่งให้เปลี่ยนหน้าพร้อมส่งข้อมูล
+        navigate(`/book-appointment?${params.toString()}`);
+    };
 
     // 3. เปลี่ยน State เริ่มต้นของ filteredDoctors เป็น array ว่าง
     const [filteredDoctors, setFilteredDoctors] = useState([]);
@@ -16,13 +32,20 @@ function DoctorSearch() {
         // ฟังก์ชันสำหรับดึงข้อมูล
         const fetchDoctors = async () => {
             try {
-                const response = await fetch('https://68b032083b8db1ae9c031b25.mockapi.io/doctors');
+                setLoading(true); // เริ่ม Loading
+                setError(null);   // เคลียร์ Error เก่า
+                const response = await fetch('/doctors');
+                if (!response.ok) {
+                    throw new Error('ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้');
+                }
                 const data = await response.json();
                 setAllDoctors(data); // เก็บข้อมูลแพทย์ทั้งหมดไว้ใน State
                 setFilteredDoctors(data); // กำหนดให้แสดงแพทย์ทั้งหมดในตอนแรก
             } catch (error) {
                 console.error("Failed to fetch doctors:", error);
-                // ในโปรเจกต์จริงควรมีการจัดการ Error ที่ดีกว่านี้
+                setError(error.message); // หากเกิด Error ให้เก็บข้อความไว้
+            } finally {
+                setLoading(false); // สิ้นสุด Loading
             }
         };
 
@@ -42,6 +65,15 @@ function DoctorSearch() {
 
         setFilteredDoctors(searchResult);
     };
+
+    if (loading) {
+        return <div className="state-container"><p>กำลังโหลดข้อมูลแพทย์...</p></div>;
+    }
+
+    if (error) {
+        return <div className="state-container"><p>เกิดข้อผิดพลาด: {error}</p></div>;
+    }
+
     return (
         <div className="search-container">
             <header className="search-header">
@@ -65,7 +97,10 @@ function DoctorSearch() {
                             <h3>{doctor.name}</h3>
                             <p className="specialty">{doctor.specialty}</p>
                             <p className="hospital">{doctor.hospital}</p>
-                            <button className="appointment-btn">จองนัดหมาย</button>
+                            <button
+                                className="appointment-btn"
+                                onClick={() => handleBookAppointment(doctor)}>จองนัดหมาย
+                            </button>
                         </div>
                     ))
                 ) : (

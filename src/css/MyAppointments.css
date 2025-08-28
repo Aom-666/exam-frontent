@@ -70,9 +70,15 @@
   background-color: #6c757d; /* Gray */
 }
 
-.no-appointments {
+.message {
   text-align: center;
   font-size: 1.2rem;
   color: #666;
   padding: 3rem;
+}
+
+@media (max-width: 768px) {
+  .appointments-header h1 {
+    font-size: 1.8rem; /* ลดขนาด H1 */
+  }
 }

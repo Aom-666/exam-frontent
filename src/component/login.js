@@ -13,7 +13,7 @@ function Login() {
 
     try {
       // ยิง Request ไปยัง Mock API ที่เราสร้างไว้
-      const response = await fetch('https://68b032083b8db1ae9c031b25.mockapi.io/login', {
+      const response = await fetch('/login', {
         method: 'POST', // กำหนด method เป็น POST
         headers: {
           'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ function Login() {
       const data = await response.json();
       console.log('Login successful, token:', data.token);
 
-      // (ในโปรเจกต์จริง เราจะเก็บ token นี้ไว้ใน localStorage)
+      localStorage.setItem('authToken', data.token);
 
       // ***** นี่คือส่วนสำคัญ: สั่งให้เปลี่ยนหน้าไปที่ '/search' *****
       navigate('/search');

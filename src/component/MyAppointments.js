@@ -1,32 +1,45 @@
 // src/pages/MyAppointments.js
-
 import React, { useState, useEffect } from 'react';
 import '../css/MyAppointments.css';
 
 function MyAppointments() {
   const [appointments, setAppointments] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        // ---- ใช้ URL ของคุณตรงนี้ ----
-        const response = await fetch('YOUR_MOCK_API_URL/appointments');
+        const response = await fetch('/appointments');
+        if (!response.ok) {
+          throw new Error('ไม่สามารถดึงข้อมูลนัดหมายได้');
+        }
         const data = await response.json();
         setAppointments(data);
       } catch (error) {
+        setError(error.message);
         console.error("Failed to fetch appointments:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchAppointments();
   }, []);
 
-  // ฟังก์ชันสำหรับเปลี่ยนสีสถานะ
   const getStatusClass = (status) => {
     if (status === 'ยืนยันแล้ว') return 'status-confirmed';
     if (status === 'เสร็จสิ้น') return 'status-completed';
     return '';
   };
+
+  if (loading) {
+    return <div className="appointments-container"><p className="message">กำลังโหลดข้อมูล...</p></div>;
+  }
+
+  if (error) {
+    return <div className="appointments-container"><p className="message">เกิดข้อผิดพลาด: {error}</p></div>;
+  }
 
   return (
     <div className="appointments-container">
@@ -40,7 +53,7 @@ function MyAppointments() {
               <div className="appointment-details">
                 <h3>{app.specialty}</h3>
                 <p><strong>แพทย์:</strong> {app.doctorName}</p>
-                <p><strong>วันที่:</strong> {app.date} | <strong>เวลา:</strong> {app.time}</p>
+                <p><strong>วันที่:</strong> {app.date} | <strong>เวลา:</strong> {app.time} น. </p>
               </div>
               <div className={`appointment-status ${getStatusClass(app.status)}`}>
                 {app.status}
@@ -48,7 +61,7 @@ function MyAppointments() {
             </div>
           ))
         ) : (
-          <p className="no-appointments">คุณยังไม่มีรายการนัดหมาย</p>
+          <p className="message">คุณยังไม่มีรายการนัดหมาย</p>
         )}
       </main>
     </div>
