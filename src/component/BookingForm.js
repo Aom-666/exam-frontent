@@ -4,27 +4,19 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import '../css/BookingForm.css';
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 function BookingForm() {
-    const [date, setDate] = useState('');
-    const [time, setTime] = useState('');
+    const [selectedDate, setSelectedDate] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const navigate = useNavigate();
-
     const [searchParams] = useSearchParams();
-
-    const [doctorInfo, setDoctorInfo] = useState({
-        name: '',
-        specialty: '',
-    });
+    const [doctorInfo, setDoctorInfo] = useState({ name: '', specialty: '' });
 
     useEffect(() => {
         const doctorName = searchParams.get('doctorName');
         const specialty = searchParams.get('specialty');
-        
-        // --- เพิ่มส่วนนี้เพื่อตรวจสอบ ---
-        console.log('กำลังอ่านข้อมูลจาก URL:', { doctorName, specialty });
-        // -----------------------------
-
         if (doctorName && specialty) {
             setDoctorInfo({ name: doctorName, specialty: specialty });
         }
@@ -33,7 +25,7 @@ function BookingForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if (!date || !time) {
+        if (!selectedDate) {
             alert('กรุณาเลือกวันและเวลาที่ต้องการนัดหมาย');
             return;
         }
@@ -43,8 +35,9 @@ function BookingForm() {
         const newAppointment = {
             doctorName: doctorInfo.name,
             specialty: doctorInfo.specialty,
-            date: date,
-            time: time,
+            date: selectedDate.toISOString().split('T')[0], // YYYY-MM-DD
+            // ปรับรูปแบบเวลาให้เป็น HH:mm (เช่น 06:00) เพื่อให้สอดคล้องกับ DatePicker
+            time: selectedDate.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit', hour12: false }),
             status: 'ยืนยันแล้ว'
         };
 
@@ -53,9 +46,7 @@ function BookingForm() {
         try {
             const response = await fetch('/appointments', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newAppointment),
             });
 
@@ -77,30 +68,25 @@ function BookingForm() {
     return (
         <div className="booking-container">
             <form className="booking-form" onSubmit={handleSubmit}>
-                {/* --- แก้ไขส่วนนี้ --- */}
                 <header className="booking-header">
                     <h2>จองนัดหมายกับ<br /> {doctorInfo.name || 'แพทย์'}</h2>
                     <p>สาขา: {doctorInfo.specialty || '...'}</p>
                 </header>
-                {/* ------------------- */}
                 <main className="form-fields">
                     <div className="input-group">
-                        <label htmlFor="date">เลือกวันที่</label>
-                        <input
-                            type="date"
-                            id="date"
-                            value={date}
-                            onChange={(e) => setDate(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="time">เลือกเวลา</label>
-                        <input
-                            type="time"
-                            id="time"
-                            value={time}
-                            onChange={(e) => setTime(e.target.value)}
+                        <label htmlFor="appointment-date">เลือกวันและเวลา</label>
+                        <DatePicker
+                            selected={selectedDate}
+                            onChange={(date) => setSelectedDate(date)}
+                            showTimeSelect
+                            minDate={new Date()}
+                            // ปรับ dateFormat ให้แสดง "วัน เดือน ปี เวลา HH:mm น."
+                            // เช่น "5 กันยายน 2025 เวลา 06:00 น."
+                            dateFormat="d MMMM yyyy เวลา HH:mm น." // เปลี่ยน h:mm aa เป็น HH:mm น.
+                            timeFormat="HH:mm" // กำหนด format เวลาเป็น 24-hour (00-23)
+                            timeIntervals={15} // สามารถเลือกเวลาเป็นช่วง 15 นาที
+                            className="date-picker-input"
+                            placeholderText="กรุณาเลือกวันและเวลา"
                             required
                         />
                     </div>

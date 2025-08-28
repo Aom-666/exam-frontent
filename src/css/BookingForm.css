@@ -101,3 +101,27 @@
   transform: none;
   box-shadow: none;
 }
+
+/* --- ปรับปรุงดีไซน์ DatePicker Input --- */
+.input-group .react-datepicker-wrapper {
+  width: 100%; /* ทำให้ wrapper เต็มความกว้าง */
+}
+
+.date-picker-input {
+  display: flex; /* เปิดใช้งาน Flexbox */
+  align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.date-picker-input::before {
+  content: '📅'; /* เพิ่มไอคอนปฏิทิน */
+  margin-right: 0.8rem; /* ระยะห่างระหว่างไอคอนกับข้อความ */
+  font-size: 1.2rem;
+}
