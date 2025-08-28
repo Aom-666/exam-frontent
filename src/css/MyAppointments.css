@@ -1,0 +1,78 @@
+/* src/pages/MyAppointments.css */
+
+.appointments-container {
+  font-family: 'Sarabun', sans-serif;
+  background-color: #F8F9FA;
+  min-height: 100vh;
+}
+
+.appointments-header {
+  background-color: #4A90E2;
+  color: white;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.appointments-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.appointments-list {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.appointment-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-left: 5px solid #4A90E2;
+}
+
+.appointment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.appointment-details h3 {
+  margin: 0 0 0.5rem;
+  color: #333;
+}
+
+.appointment-details p {
+  margin: 0.25rem 0;
+  color: #555;
+}
+
+.appointment-status {
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: bold;
+  color: white;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.status-confirmed {
+  background-color: #28a745; /* Green */
+}
+
+.status-completed {
+  background-color: #6c757d; /* Gray */
+}
+
+.no-appointments {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  padding: 3rem;
+}

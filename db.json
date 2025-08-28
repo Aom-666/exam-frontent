@@ -1,0 +1,18 @@
+{
+  "doctors": [
+    { "id": 1, "name": "นพ. สมชาย เก่งมาก", "specialty": "อายุรกรรม", "hospital": "โรงพยาบาล MediCare", "image": "https://i.pravatar.cc/150?img=1" },
+    { "id": 2, "name": "พญ. สุจิตรา ใจดี", "specialty": "กุมารเวชศาสตร์", "hospital": "โรงพยาบาล MediCare", "image": "https://i.pravatar.cc/150?img=2" },
+    { "id": 3, "name": "นพ. วิชัย มีชัย", "specialty": "ศัลยกรรม", "hospital": "โรงพยาบาล MediCare", "image": "https://i.pravatar.cc/150?img=3" },
+    { "id": 4, "name": "พญ. พรทิพย์ สุขสันต์", "specialty": "อายุรกรรม", "hospital": "โรงพยาบาล MediCare", "image": "https://i.pravatar.cc/150?img=4" },
+    { "id": 5, "name": "นพ. ชาตรี เชี่ยวชาญ", "specialty": "ศัลยกรรม", "hospital": "โรงพยาบาล MediCare", "image": "https://i.pravatar.cc/150?img=5" },
+    { "id": 6, "name": "พญ. อรทัย งามเด่น", "specialty": "สูติศาสตร์-นรีเวชวิทยา", "hospital": "โรงพยาบาล MediCare", "image": "https://i.pravatar.cc/150?img=6" }
+  ],
+  "appointments": [
+    { "id": 1, "doctorName": "นพ. สมชาย เก่งมาก", "specialty": "อายุรกรรม", "date": "2025-09-05", "time": "10:00 น.", "status": "ยืนยันแล้ว" },
+    { "id": 2, "doctorName": "พญ. สุจิตรา ใจดี", "specialty": "กุมารเวชศาสตร์", "date": "2025-09-08", "time": "14:30 น.", "status": "เสร็จสิ้น" },
+    { "id": 3, "doctorName": "นพ. วิชัย มีชัย", "specialty": "ศัลยกรรม", "date": "2025-09-12", "time": "09:00 น.", "status": "ยืนยันแล้ว" }
+  ],
+  "login": {
+    "token": "mock-jwt-token-1234567890"
+  }
+}

@@ -1,0 +1,83 @@
+/* ใช้ฟอนต์ที่สะอาดตาและทันสมัย */
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
+
+/* --- Overall Page Layout --- */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* ให้สูงเต็มหน้าจอเสมอ */
+  background-color: #F8F9FA; /* สีเทาอ่อนสำหรับพื้นหลัง */
+  font-family: 'Sarabun', sans-serif;
+  padding: 1rem;
+}
+
+/* --- The Login Card --- */
+.login-form {
+  background: #FFFFFF; /* พื้นหลังสีขาว */
+  padding: 2.5rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  border-top: 5px solid #4A90E2; /* แถบสีฟ้าด้านบนเพื่อสร้างแบรนด์ */
+}
+
+/* --- Header Text --- */
+.login-form h2 {
+  margin-bottom: 2rem;
+  color: #4A4A4A; /* สีเทาเข้มสำหรับตัวอักษร */
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+/* --- Input Group (Label + Input) --- */
+.input-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #4A4A4A;
+  font-weight: 600;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #DDDDDD; /* เส้นขอบสีเทาอ่อน */
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* --- Input Focus Effect (UX Improvement) --- */
+.input-group input:focus {
+  outline: none;
+  border-color: #4A90E2; /* เปลี่ยนสีเส้นขอบเป็นสีฟ้าเมื่อ focus */
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); /* เพิ่มเงาเรืองแสง */
+}
+
+/* --- Submit Button --- */
+button {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #4A90E2; /* สีฟ้าหลัก */
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* --- Button Hover Effect --- */
+button:hover {
+  background-color: #357ABD; /* ทำให้สีเข้มขึ้นเมื่อเอาเมาส์ไปชี้ */
+  transform: translateY(-2px); /* ทำให้ปุ่มขยับขึ้นเล็กน้อย */
+}
