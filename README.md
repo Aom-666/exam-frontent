@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# โปรเจกต์เว็บแอปพลิเคชันสำหรับค้นหาและนัดหมายแพทย์ (Telemedicine SPA) สร้างขึ้นเพื่อเป็นส่วนหนึ่งของแบบทดสอบสำหรับตำแหน่ง Frontend Developer โดยพัฒนาตามโจทย์จากบริษัท MediCare 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ✨ ฟีเจอร์หลัก (Features)
 
-## Available Scripts
+* **Mock Authentication:** เข้าสู่ระบบ / ออกจากระบบ โดยใช้ Token จำลองที่เก็บใน `localStorage`
+* **ค้นหาแพทย์:** ค้นหาแพทย์ตามสาขาที่ต้องการ 
+* **จัดการนัดหมาย:**
+    * ดูรายการนัดหมายทั้งหมดของตนเอง
+    * จองนัดหมายใหม่กับแพทย์ที่เลือก พร้อมเลือกวันและเวลา
+* **State Management:** จัดการสถานะ Loading และ Error ขณะดึงข้อมูล
+* **Form Validation:** ป้องกันการเลือกวันที่ผ่านมาแล้ว และการส่งฟอร์มที่ข้อมูลไม่ครบ
+* **Responsive Design:** รองรับการใช้งานบนหน้าจอเดสก์ท็อปและมือถือ
 
-In the project directory, you can run:
+## 📸 ภาพหน้าจอ (Screenshots)
 
-### `npm start`
+| หน้า Login | หน้าค้นหาแพทย์ |
+| :---: | :---: |
+| ![Login Page](./public/screenshots/Login.png) | ![Doctor Search Page](./public/screenshots/doctorsearch.png) |
+| **หน้านัดหมายของฉัน** | **หน้าฟอร์มจองนัด** |
+| ![My Appointments Page](./public/screenshots/appointment.png) | ![Booking Form Page](./public/screenshots/booking.png) |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ เทคโนโลยีที่ใช้ (Tech Stack)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* **Frontend:** [React.js](https://reactjs.org/)
+* **UI Library:** Custom CSS
+* **Routing:** [React Router DOM](https://reactrouter.com/)
+* **Mock API:** [Mock Service Worker (MSW)](https://mswjs.io/)
+* **Date & Time Picker:** [React Datepicker](https://reactdatepicker.com/)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 การติดตั้งและรันโปรเจกต์ (Getting Started)
 
-### `npm run build`
+### สิ่งที่ต้องมี (Prerequisites)
+* [Node.js](https://nodejs.org/) (เวอร์ชัน 16 หรือสูงกว่า)
+* npm หรือ yarn
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### ขั้นตอนการติดตั้ง
+1.  **Clone a repository**
+    ```bash
+    git clone (https://github.com/Aom-666/exam-frontent) (https://github.com/Aom-666/exam-frontent)
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2.  **เข้าไปที่โฟลเดอร์โปรเจกต์**
+    ```bash
+    cd exam-frontent
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3.  **ติดตั้ง Dependencies ทั้งหมด**
+    ```bash
+    npm install
+    ```
 
-### `npm run eject`
+4.  **รันแอปพลิเคชัน**
+    ```bash
+    npm start
+    ```
+    แอปพลิเคชันจะเปิดขึ้นมาที่ `http://localhost:3000` โดยอัตโนมัติ
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+> **หมายเหตุ:** โปรเจกต์นี้ใช้ **Mock Service Worker (MSW)** ในการจำลอง API ดังนั้นจึง **ไม่จำเป็นต้องรันเซิร์ฟเวอร์แยกต่างหาก** แค่รัน `npm start` ก็สามารถใช้งานได้ครบทุกฟังก์ชันแล้ว
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📜 สคริปต์ที่ใช้งานได้ (Available Scripts)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* **`npm start`**: รันแอปพลิเคชันในโหมดพัฒนา
+* **`npm test`**: รันชุดทดสอบ
+* **`npm run build`**: สร้างแอปพลิเคชันเวอร์ชันสำหรับนำไปใช้งานจริง (Production)
